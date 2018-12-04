@@ -1,0 +1,12 @@
+package com.study.spring.sail;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SailServiceMybatisApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SailServiceMybatisApplication.class, args);
+    }
+}
