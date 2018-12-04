@@ -1,4 +1,4 @@
-package com.study.spring.sail.service.modules.sys;
+package com.study.spring.sail.modules.sys.service;
 
 import com.study.spring.sail.domain.modules.sys.SysLogin;
 import org.springframework.cache.annotation.Cacheable;

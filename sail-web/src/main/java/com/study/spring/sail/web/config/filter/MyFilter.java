@@ -1,4 +1,4 @@
-package com.study.spring.sail.config.filter;
+package com.study.spring.sail.web.config.filter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

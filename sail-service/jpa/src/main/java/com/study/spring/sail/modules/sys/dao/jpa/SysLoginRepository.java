@@ -1,5 +1,6 @@
-package com.study.spring.sail.dao.modules.sys.jpa;
+package com.study.spring.sail.modules.sys.dao.jpa;
 
+import com.study.spring.sail.domain.modules.sys.SysLogin;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

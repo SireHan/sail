@@ -1,4 +1,4 @@
-package com.study.spring.sail.web.modules.domain;
+package com.study.spring.sail.domain.modules.sys;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

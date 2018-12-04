@@ -1,5 +1,6 @@
-package com.study.spring.sail.modules.sys.service.mybatis;
+package com.study.spring.sail.modules.sys.dao.mybatis;
 
+import com.study.spring.sail.domain.modules.sys.SysLogin;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

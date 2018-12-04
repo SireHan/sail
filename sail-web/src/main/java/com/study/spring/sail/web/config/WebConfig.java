@@ -1,6 +1,6 @@
-package com.study.spring.sail.config;
+package com.study.spring.sail.web.config;
 
-import com.study.spring.sail.config.filter.MyFilter;
+import com.study.spring.sail.web.config.filter.MyFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

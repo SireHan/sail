@@ -1,5 +1,6 @@
-package com.study.spring.sail.modules.domain;
+package com.study.spring.sail.modules.sys.dao.jpa;
 
+import com.study.spring.sail.domain.modules.sys.SysLogin;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
-
 
 import java.util.Date;
 
@@ -38,7 +38,7 @@ public class SysLoginRepositoryTest {
         Assert.assertEquals("testAccount",sysLoginRepository.findByLoginName("testAccount").getLoginName());
         // 修改测试
         // 删除测试
-        //sysLoginRepository.delete(sysLogin);
+        sysLoginRepository.delete(sysLogin);
         // 分页查询
         int page = 1, size = 10;
         Sort sort = new Sort(Sort.Direction.ASC,"id");

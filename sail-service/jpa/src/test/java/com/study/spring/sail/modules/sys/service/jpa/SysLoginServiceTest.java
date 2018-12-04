@@ -1,6 +1,7 @@
-package com.study.spring.sail.modules.sys.service;
+package com.study.spring.sail.modules.sys.service.jpa;
 
 import com.study.spring.sail.domain.modules.sys.SysLogin;
+import com.study.spring.sail.modules.sys.service.SysLoginService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

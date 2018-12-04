@@ -1,6 +1,6 @@
 package com.study.spring.sail.web.config;
 
-import com.study.spring.sail.modules.domain.SysLogin;
+import com.study.spring.sail.domain.modules.sys.SysLogin;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +11,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

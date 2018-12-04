@@ -1,4 +1,4 @@
-package com.study.spring.sail.modules.controller;
+package com.study.spring.sail.web.modules.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
