@@ -50,4 +50,12 @@
         </dependency>
     </dependencies>
 
+    <modules>
+        <module>sail-domain</module>
+        <module>sail-service</module>
+        <module>sail-service/jpa</module>
+        <!--<module>sail-service/mybatis</module>-->
+        <module>sail-web</module>
+    </modules>
+
 </project>
