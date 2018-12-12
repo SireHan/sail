@@ -23,10 +23,10 @@ public class SysLoginRepositoryTest {
     @Test
     public void curdTest() throws Exception{
         SysLogin sysLogin = new SysLogin();
-        sysLogin.setLoginName("testAccount");
+        String loginName = "account"+(new Date()).getTime();
+        sysLogin.setLoginName(loginName);
         sysLogin.setPassword("123456");
         sysLogin.setCreateBy(0L);
-        sysLogin.setCreateDate(new Date());
         sysLogin.setDelFlag("0");
         sysLogin.setLoginStatus("0");
         sysLogin.setLoginType("0");
@@ -34,11 +34,12 @@ public class SysLoginRepositoryTest {
         // 新增测试
         sysLoginRepository.save(sysLogin);
         // 查询测试
-        Assert.assertEquals(1,sysLoginRepository.findAll().size());
-        Assert.assertEquals("testAccount",sysLoginRepository.findByLoginName("testAccount").getLoginName());
+        //Assert.assertEquals(1,sysLoginRepository.findAll().size());
+        Assert.assertEquals(loginName,sysLoginRepository.findByLoginName(loginName).getLoginName());
+        Assert.assertEquals(loginName,sysLoginRepository.findById(sysLogin.getId()).get().getLoginName());
         // 修改测试
         // 删除测试
-        sysLoginRepository.delete(sysLogin);
+        //sysLoginRepository.delete(sysLogin);
         // 分页查询
         int page = 1, size = 10;
         Sort sort = new Sort(Sort.Direction.ASC,"id");

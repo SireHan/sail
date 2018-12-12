@@ -1,14 +1,14 @@
 package com.study.spring.sail.modules.sys.jpaImpl.dao;
 
+import com.study.spring.sail.config.jpa.BasicRepository;
 import com.study.spring.sail.modules.sys.jpaImpl.entity.SysLogin;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface SysLoginRepository extends JpaRepository<SysLogin,Long> {
+public interface SysLoginRepository extends BasicRepository<SysLogin,Long> {
 
     /**
      * 根据登陆名查询登陆账户

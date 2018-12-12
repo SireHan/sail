@@ -15,8 +15,4 @@
 
     <name>sail-domain</name>
     <description>domain for sail</description>
-
-    <dependencies>
-
-    </dependencies>
 </project>

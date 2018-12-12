@@ -1,4 +1,4 @@
-package com.study.spring.sail.config.exception.handler;
+package com.study.spring.sail.config.web.handler;
 
 import com.study.spring.sail.config.exception.api.BadRequestException;
 import com.study.spring.sail.config.exception.api.NotFoundException;
@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class RestExceptionHandle extends ResponseEntityExceptionHandler {
+public class  RestExceptionHandle extends ResponseEntityExceptionHandler {
 
     /**
      * 错误请求处理
