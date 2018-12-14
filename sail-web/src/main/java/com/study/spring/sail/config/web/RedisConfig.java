@@ -49,11 +49,10 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      *  实例化 RedisTemplate 对象
-     * @return
      */
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<String, String> redisTemplate = new RedisTemplate<String, String>();
+        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(factory);
         redisTemplate.afterPropertiesSet();
         setSerializer(redisTemplate);

@@ -1,10 +1,8 @@
 package com.study.spring.sail.modules.api;
 
 import com.study.spring.sail.modules.sys.domain.LoginInfo;
-import com.study.spring.sail.modules.sys.jpaImpl.service.LoginInfoService;
+import com.study.spring.sail.modules.sys.service.LoginInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

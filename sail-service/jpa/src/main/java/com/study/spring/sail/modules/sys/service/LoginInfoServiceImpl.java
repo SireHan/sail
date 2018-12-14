@@ -1,4 +1,4 @@
-package com.study.spring.sail.modules.sys.jpaImpl.service;
+package com.study.spring.sail.modules.sys.service;
 
 
 import com.study.spring.sail.config.exception.api.NotFoundException;

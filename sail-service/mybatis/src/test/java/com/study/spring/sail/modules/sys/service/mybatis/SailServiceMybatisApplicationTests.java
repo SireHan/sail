@@ -1,4 +1,4 @@
-package com.study.spring.sail.modules.sys.jpaImpl.service.mybatis;
+package com.study.spring.sail.modules.sys.service.mybatis;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

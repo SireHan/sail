@@ -9,12 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestPropertySource("classpath:test.properties")
 public class SysLoginRepositoryTest {
 
     @Autowired
@@ -34,12 +36,12 @@ public class SysLoginRepositoryTest {
         // 新增测试
         sysLoginRepository.save(sysLogin);
         // 查询测试
-        //Assert.assertEquals(1,sysLoginRepository.findAll().size());
+        Assert.assertEquals(1,sysLoginRepository.findAll().size());
         Assert.assertEquals(loginName,sysLoginRepository.findByLoginName(loginName).getLoginName());
         Assert.assertEquals(loginName,sysLoginRepository.findById(sysLogin.getId()).get().getLoginName());
         // 修改测试
         // 删除测试
-        //sysLoginRepository.delete(sysLogin);
+        sysLoginRepository.delete(sysLogin);
         // 分页查询
         int page = 1, size = 10;
         Sort sort = new Sort(Sort.Direction.ASC,"id");

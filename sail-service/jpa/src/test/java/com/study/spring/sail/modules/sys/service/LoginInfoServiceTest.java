@@ -1,4 +1,4 @@
-package com.study.spring.sail.modules.sys.jpaImpl.service;
+package com.study.spring.sail.modules.sys.service;
 
 import com.study.spring.sail.modules.sys.domain.LoginInfo;
 import org.junit.Test;
