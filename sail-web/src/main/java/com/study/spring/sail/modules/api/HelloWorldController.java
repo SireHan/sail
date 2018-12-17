@@ -1,5 +1,6 @@
 package com.study.spring.sail.modules.api;
 
+import com.study.spring.sail.config.web.exception.ExitException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,5 +23,14 @@ public class HelloWorldController {
         }
         session.setAttribute("uid",uid);
         return session.getId();
+    }
+
+    @RequestMapping("/shutdown")
+    public Integer shutdown() throws ExitException{
+        try{
+            return Integer.parseInt("test");
+        }catch (Exception e){
+            throw  new ExitException("error",e);
+        }
     }
 }
