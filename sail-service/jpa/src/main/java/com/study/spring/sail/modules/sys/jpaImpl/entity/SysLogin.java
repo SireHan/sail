@@ -23,23 +23,23 @@ public class SysLogin extends BaseAuditEntity {
     @GeneratedValue
     private Long id;
     @Column(nullable = false,unique = true)
-    private String loginName;       // 登录名
+    private String loginName;                               // 登录名
     @Column(nullable = false)
-    private String password;        // 密码
+    private String password;                                // 密码
     @Column(nullable = false)
-    private String loginStatus;      // 登录状态
+    private String loginStatus;                            // 登录状态
     @Column(nullable = false)
-    private String loginType;       // 账户类型
+    private String loginType;                               // 账户类型
     @Column(nullable = true,unique = true)
-    private String phone;           // 手机号
+    private String phone;                                   // 手机号
+    @Column(nullable = true,unique = true)
+    private String email;                                   // 邮箱
     @Column(nullable = true)
-    private String email;           // 邮箱
-    @Column(nullable = true)
-    private Long photoId;           // 头像id
+    private Long photoId;                                   // 头像id
     @Column(nullable = false)
-    private Long userId;            // 用户id
+    private Long userId;                                    // 用户id
     @Column(nullable = true)
-    private String loginIp;         // 最后一次登录ip
+    private String loginIp;                                 // 最后一次登录ip
     @Column(nullable = true)
-    private Date loginDate;         // 最后一次登录时间
+    private Date loginDate;                                 // 最后一次登录时间
 }
