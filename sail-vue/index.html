@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>sail-vue</title>
+
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" placeholder="你的名字" v-model="name" />
+      <p>{{name}}{{reversedText}}</p>
+      <p>当前时间 {{time | formatDate}}</p>
+      <input type="button" @click="handlerClick" value="click"/>
+      <a :href="url">百度</a>
+      <ul>
+        <li v-for="book in books">{{book.name}}</li>
+      </ul>
+    </div>
+    <script src= "https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      var app = new Vue({
+        el:'#app',
+        data:{
+          books:[
+            {name:"abcdefg"},
+            {name:"test"}
+          ],
+          name:"你好",
+          text:'123,456',
+          time:new Date(),
+          url:"http://www.baidu.com"
+        },
+        computed:{
+          reversedText:{
+            get:function () {
+              return this.text.split(",").reverse().join(",");
+            },
+            set:function (newValue) {
+              this.text="1234567,45678"
+            }
+          }
+        },
+        created:function () {
+          console.log(this.name);
+        },
+        mounted:function () {
+          console.log(this.$el);
+          var _this = this;
+          this.timer = setInterval(function () {
+            _this.time = new Date();
+          },1000);
+        },
+        filters:{
+          formatDate:function (value) {
+            var date = new Date(value);
+            var year = date.getFullYear();
+            var month = padDate(date.getMonth()+1);
+            var day = padDate(date.getDate());
+            var hours = padDate(date.getHours());
+            var minutes = padDate(date.getMinutes());
+            var secondes = padDate(date.getSeconds());
+            return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+secondes;
+          }
+        },
+        methods:{
+          handlerClick:function () {
+            alert(1);
+          }
+        },
+        beforeDestroy:function () {
+          if(this.timer){
+            clearInterval(this.timer);
+          }
+        }
+      })
+
+      function padDate(value) {
+        return value <10 ? '0'+value : value;
+      }
+    </script>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
