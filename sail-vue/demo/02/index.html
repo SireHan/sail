@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>组件</title>
+</head>
+<body>
+  <div id="app">
+    <my-component message="props传递数据"></my-component>
+    <test-component></test-component>
+  </div>
+  <script src= "https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script>
+    Vue.component('my-component',{
+      props:['message'],
+      template:'<div>这是组件的内容{{message}}</div>'
+    })
+    var app = new Vue({
+      el:'#app',
+      components:{
+        'test-component':{
+          template:'<div>这里是局部组件</div>'
+        }
+      }
+    })
+  </script>
+  </body>
+  </html>
