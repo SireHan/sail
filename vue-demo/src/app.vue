@@ -4,6 +4,7 @@
 		<p>
 			<img src="../static/images/girl.jpg" />
 		</p>
+		<router-view></router-view>
 	</div>
 </template>
 

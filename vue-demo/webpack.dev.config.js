@@ -7,7 +7,7 @@ module.exports = merge(webpackBaseConfig,{
 	output: {
 		publicPath: '/dist/',
 		filename: '[name].js',
-		chunkFilename: '[name].js'
+		chunkFilename: '[name].chunk.js'
 	},
 	mode: "development", // 生产模式
 	plugins:[
@@ -17,7 +17,7 @@ module.exports = merge(webpackBaseConfig,{
 	    }),
 		new MiniCssExtractPlugin({
 			filename: "[name].css",
-			chunkFilename: "[id].css"
+			chunkFilename: "[name].css"
 		})
 	]
 })
