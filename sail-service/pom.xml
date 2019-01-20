@@ -16,6 +16,10 @@
     <name>sail-service</name>
     <description>service for sail</description>
 
+    <properties>
+        <druid.version>1.1.6</druid.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.study.spring</groupId>
@@ -23,5 +27,19 @@
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- 数据库连接池（阿里druid开源项目） -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
     </dependencies>
 </project>

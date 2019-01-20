@@ -15,8 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 
-@RunWith(SpringRunner.class)
-@DataJpaTest
+//@RunWith(SpringRunner.class)
+//@DataJpaTest
 public class DataJPARepositoryTest {
 
     @Autowired
@@ -25,7 +25,7 @@ public class DataJPARepositoryTest {
     @Autowired
     private SysLoginRepository sysLoginRepository;
 
-    @Test
+    //@Test
     public void curd_sysLogin() {
         // given
         SysLogin sysLogin = new SysLogin();
