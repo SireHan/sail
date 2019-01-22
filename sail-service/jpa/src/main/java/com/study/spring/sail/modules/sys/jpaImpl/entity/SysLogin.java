@@ -12,8 +12,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class SysLogin extends BaseAuditEntity {
 
