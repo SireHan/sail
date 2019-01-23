@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,10 +31,9 @@ public class CityController {
     @GetMapping("/loadCityList")
     public List<Tree> loadCityList(Long parentId){
         if(parentId == null){
-            return cityCodeService.getCityListByLevel(1).stream().map(city -> city.transTree()).collect(Collectors.toList());
+            return cityCodeService.getCityListByLevel(1).stream().map(City::transTree).collect(Collectors.toList());
         }else{
-
+            return cityCodeService.getCityListByParent(parentId).stream().map(City::transTree).collect(Collectors.toList());
         }
-        return null;
     }
 }

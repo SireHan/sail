@@ -12,6 +12,13 @@ public interface CityCodeService {
      * @return
      */
     @Cacheable(value="cityCode-level")
-    public List<City> getCityListByLevel(int level);
+    List<City> getCityListByLevel(int level);
 
+    /**
+     *  查询某个父级下面的城市
+     * @param parentId
+     * @return
+     */
+    @Cacheable(value="cityCode-parent")
+    List<City> getCityListByParent(Long parentId);
 }

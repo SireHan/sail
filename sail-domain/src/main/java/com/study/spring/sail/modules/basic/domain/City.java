@@ -34,8 +34,11 @@ public class City implements TransTree<City>, Serializable {
         Tree tree = new Tree();
         tree.label = this.name;
         tree.value = id+"";
-        tree.children = new ArrayList();
         tree.node = this;
+        if(this.level!=3){
+            tree.loading = false;
+            tree.children = new ArrayList<>();
+        }
         return tree;
     }
 }

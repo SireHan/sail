@@ -1,7 +1,7 @@
 <template>
     <div class="about">
         <h1>This is an about page</h1>
-        <Cascader :data="cascaderData"></Cascader>
+        <Cascader :data="cascaderData" :load-data="getChildrenCity"></Cascader>
     </div>
 </template>
 <script>
@@ -18,8 +18,21 @@
         },
         methods: {
             getFirstLevelCity() {
-                $.ajax.get('api/basic/city/loadCityList').then(res => {
-                    console.log(res);
+                $.ajax.get('api/basic/city/loadCityList').then(data => {
+                    this.cascaderData = data;
+                })
+            },
+            getChildrenCity (item, callback) {
+                item.loading = true;
+                $.ajax.get('api/basic/city/loadCityList',{
+                    params: {
+                        parentId: item.value
+                    }
+                }).then(data => {
+                    console.log(data);
+                    item.children = data;
+                    item.loading = false;
+                    callback();
                 })
             }
         }

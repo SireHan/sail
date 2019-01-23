@@ -33,4 +33,15 @@ public class CityCodeServiceImpl extends BasicJpaService implements CityCodeServ
         });
         return cityInfoList;
     }
+
+    @Override
+    public List<City> getCityListByParent(Long parentId) {
+        List<City> cityInfoList = new ArrayList<>();
+        cityCodeRepository.findAll(QCityCode.cityCode.parentId.eq(parentId)).forEach(cityCode -> {
+            City city = new City();
+            BeanUtils.copyProperties(cityCode,city);
+            cityInfoList.add(city);
+        });
+        return cityInfoList;
+    }
 }

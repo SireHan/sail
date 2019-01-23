@@ -1,6 +1,6 @@
 package com.study.spring.sail.modules.sys.jpaImpl.dao.mybatis;
 
-import com.study.spring.sail.modules.sys.SysLogin;
+import com.study.spring.sail.modules.sys.domain.LoginInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class SysLoginMapperTest {
 
     @Test
     public void curdTest() throws Exception{
-        SysLogin sysLogin = sysLoginMapper.findByLoginName("testAccount");
+        LoginInfo sysLogin = sysLoginMapper.findByLoginName("testAccount");
         System.out.println(sysLogin.getId());
     }
 

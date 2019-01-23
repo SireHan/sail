@@ -1,6 +1,6 @@
 package com.study.spring.sail.modules.sys.jpaImpl.dao.mybatis;
 
-import com.study.spring.sail.modules.sys.SysLogin;
+import com.study.spring.sail.modules.sys.domain.LoginInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,6 +13,6 @@ public interface SysLoginMapper {
      * @return
      */
     @Select("select * from sys_login where login_name = #{loginName}")
-    SysLogin findByLoginName(String loginName);
+    LoginInfo findByLoginName(String loginName);
 
 }
