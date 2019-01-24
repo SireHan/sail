@@ -15,7 +15,7 @@ public interface SysLoginRepository extends BasicRepository<SysLogin,Long> {
      * @param loginName
      * @return
      */
-    SysLogin findByLoginName(String loginName);
+    SysLogin findByLoginNameAndDelFlag(String loginName,String delFlag);
 
     /**
      * 分页查询数据

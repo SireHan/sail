@@ -20,8 +20,8 @@ public class SysPermission extends BaseAuditEntity {
     @GeneratedValue
     private Long id;
     @Column(nullable = false)
-    private Long permissionType;                                      // 权限类型
+    private String permissionType;                                      // 权限类型
     @Column(nullable = false)
-    private Long permissionName;                                      // 权限对应的id
+    private String permissionName;                                      // 权限对应的id
 
 }

@@ -3,10 +3,16 @@ import App from './App.vue'
 import router from './router/router'
 import store from './store/store'
 import iView from 'iview'
+import config from '@/config'
 import 'iview/dist/styles/iview.css'
 
 Vue.config.productionTip = false
 Vue.use(iView)
+
+/**
+ * @description 全局注册应用配置
+ */
+Vue.prototype.$config = config
 
 new Vue({
   router,

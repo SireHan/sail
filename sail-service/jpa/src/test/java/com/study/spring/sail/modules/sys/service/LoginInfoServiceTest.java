@@ -1,5 +1,6 @@
 package com.study.spring.sail.modules.sys.service;
 
+import com.study.spring.sail.modules.sys.domain.Login;
 import com.study.spring.sail.modules.sys.domain.LoginInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,11 +19,4 @@ public class LoginInfoServiceTest {
     @Autowired
     private LoginInfoService sysLoginService;
 
-    @Test
-    public void getAllSysLogin() {
-        List<LoginInfo> sysLoginList = sysLoginService.getAllLoginInfo();
-        for(LoginInfo sysLogin:sysLoginList){
-            System.out.println(sysLogin.getLoginName());
-        }
-    }
 }

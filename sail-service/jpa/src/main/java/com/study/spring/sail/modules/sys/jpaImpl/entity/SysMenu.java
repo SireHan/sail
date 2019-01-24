@@ -1,16 +1,16 @@
 package com.study.spring.sail.modules.sys.jpaImpl.entity;
 
 import com.study.spring.sail.config.jpa.BaseAuditEntity;
-import lombok.Getter;
-import lombok.Setter;
+import com.study.spring.sail.modules.sys.domain.Permission;
+import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class SysMenu extends BaseAuditEntity {
 
@@ -37,5 +37,14 @@ public class SysMenu extends BaseAuditEntity {
     private String menuStatus;                                 // 菜单状态
     @Column(nullable = false)
     private String menuType;                                   // 菜单类型
+    @Column(nullable = false)
+    private Long permissionId;                               // 权限id
 
+    public Permission transPermission(){
+        Permission permission = new Permission();
+        permission.setPermissionType(Permission.MENU);
+        permission.setId(this.permissionId);
+        permission.setUrl(this.menuHref);
+        return permission;
+    }
 }

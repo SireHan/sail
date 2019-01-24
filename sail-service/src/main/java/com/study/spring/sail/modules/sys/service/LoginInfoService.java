@@ -1,23 +1,19 @@
 package com.study.spring.sail.modules.sys.service;
 
-import com.study.spring.sail.modules.sys.domain.LoginInfo;
+import com.study.spring.sail.modules.sys.domain.Login;
 import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
+/**
+ * 账户信息 and 用户信息 service
+ */
 public interface LoginInfoService {
 
     /**
-     *  查询所有登录账户
+     * 根据用户名查询账户信息
+     * @param loginName
      * @return
      */
-    @Cacheable(value="loginInfo-all")
-    public List<LoginInfo> getAllLoginInfo();
-
-    /**
-     *  根据id 查询登录账户
-     * @param id
-     * @return
-     */
-    LoginInfo findById(Long id);
+    Login findLoginByName(String loginName);
 }

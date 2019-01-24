@@ -1,7 +1,9 @@
 package com.study.spring.sail.modules.sys.service;
 
 
+import com.study.spring.sail.common.status.StatusCode;
 import com.study.spring.sail.config.exception.api.NotFoundException;
+import com.study.spring.sail.modules.sys.domain.Login;
 import com.study.spring.sail.modules.sys.jpaImpl.dao.SysLoginRepository;
 import com.study.spring.sail.modules.sys.domain.LoginInfo;
 import com.study.spring.sail.modules.sys.jpaImpl.entity.SysLogin;
@@ -19,18 +21,7 @@ public class LoginInfoServiceImpl implements LoginInfoService {
     private SysLoginRepository sysLoginRepository;
 
     @Override
-    public List<LoginInfo> getAllLoginInfo() {
-        List<LoginInfo> loginInfoList = new ArrayList<>();
-        List<SysLogin> sysLoginList = sysLoginRepository.findAll();
-        BeanUtils.copyProperties(sysLoginList, loginInfoList);
-        return loginInfoList;
-    }
-
-    @Override
-    public LoginInfo findById(Long id) {
-        LoginInfo loginInfo = new LoginInfo();
-        SysLogin sysLogin = sysLoginRepository.findById(id).orElseThrow(NotFoundException::new);
-        BeanUtils.copyProperties(sysLogin, loginInfo);
-        return loginInfo;
+    public Login findLoginByName(String loginName) {
+        return sysLoginRepository.findByLoginNameAndDelFlag(loginName,StatusCode.DEL_FLAG_AUDIT).transLogin();
     }
 }

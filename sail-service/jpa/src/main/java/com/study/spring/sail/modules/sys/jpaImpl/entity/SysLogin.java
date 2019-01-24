@@ -1,9 +1,12 @@
 package com.study.spring.sail.modules.sys.jpaImpl.entity;
 
 import com.study.spring.sail.config.jpa.BaseAuditEntity;
+import com.study.spring.sail.modules.sys.domain.Login;
+import com.study.spring.sail.modules.sys.domain.LoginInfo;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -41,4 +44,10 @@ public class SysLogin extends BaseAuditEntity {
     private String loginIp;                                 // 最后一次登录ip
     @Column(nullable = true)
     private Date loginDate;                                 // 最后一次登录时间
+
+    public Login transLogin(){
+        Login login = new Login();
+        BeanUtils.copyProperties(login, this);
+        return login;
+    }
 }

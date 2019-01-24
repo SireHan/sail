@@ -32,9 +32,6 @@ public class RedisTest {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setLoginName("testAccount");
         loginInfo.setPassword("123456");
-        loginInfo.setCreateBy(0L);
-        loginInfo.setCreateDate(new Date());
-        loginInfo.setDelFlag("0");
         loginInfo.setLoginStatus("0");
         loginInfo.setLoginType("0");
         loginInfo.setUserId(1L);

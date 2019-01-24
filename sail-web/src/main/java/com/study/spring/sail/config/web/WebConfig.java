@@ -18,10 +18,15 @@ import java.util.Locale;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    /**
+     * 跨域请求设置
+     * @param registry
+     */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:8080")
+                .allowedHeaders("Access-Control-Allow-Origin: *")
                 .allowCredentials(true);
     }
 

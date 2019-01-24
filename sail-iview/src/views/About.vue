@@ -5,7 +5,7 @@
     </div>
 </template>
 <script>
-    import $ from '../lib/util';
+    import $ from '../lib/request';
 
     export default {
         data() {
