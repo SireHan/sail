@@ -17,9 +17,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 /**
-*@author 韩炜
-*@version 2018年8月29日 上午11:40:10
-*/
+ * 自定义账户登录查询
+ *
+ * @author 韩炜
+ * @date 2019-01-15 11:00
+ */
 @Service
 public class CustomUserService implements UserDetailsService {
 
@@ -34,18 +36,18 @@ public class CustomUserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String loginName) {
         //根据账户名查询
-    	Login login = loginInfoService.findLoginByName(loginName);
+        Login login = loginInfoService.findLoginByName(loginName);
         if (login == null) {
             throw new BadCredentialsException("账户不存在");
-        } else if ((BaseEntity.DISABLE_STATUS+"").equals(login.getLoginStatus())) {
+        } else if ((BaseEntity.DISABLE_STATUS + "").equals(login.getLoginStatus())) {
             throw new BadCredentialsException("账户已经禁用，请联系管理员！");
         }
         logger.info(login.getLoginName() + " 正在登录...");
         // 获取用户角色
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        if(Login.ADMIN.equals(login.getLoginType())) { // 超级用户角色
-        	authorities.add(new SimpleGrantedAuthority("ROLE_" + "admin"));
-        }else{
+        if (Login.ADMIN.equals(login.getLoginType())) { // 超级用户角色
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + "admin"));
+        } else {
             // TODO 查询账户角色
         }
         UserDetails userDetails = new User(loginName, login.getPassword(), authorities);

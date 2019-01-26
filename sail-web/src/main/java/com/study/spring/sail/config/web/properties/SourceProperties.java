@@ -6,6 +6,12 @@ import org.springframework.context.annotation.PropertySource;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * 自定义资源加载 properties
+ *
+ * @author 韩炜
+ * @date 2019-01-15 11:00
+ */
 @Configuration
 @ConfigurationProperties(prefix = "project")
 @PropertySource("classpath:sail.properties")

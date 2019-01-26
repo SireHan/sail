@@ -20,10 +20,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 验证失败返回json
-*@author 韩炜
-*@version 2018年8月29日 上午11:27:26
-*@Email hanwei@robustsoft.cn
-*/
+ *
+ * @author 韩炜
+ * @version 2018年8月29日 上午11:27:26
+ * @Email hanwei@robustsoft.cn
+ */
 @Component("myAuthenctiationFailureHandler")
 public class MyAuthenctiationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
@@ -39,18 +40,18 @@ public class MyAuthenctiationFailureHandler extends SimpleUrlAuthenticationFailu
         logger.info("登录失败");
         if (exception.getMessage().equals("Bad credentials")) {
             errInfo = "账户名或密码错误！";
-        }else{
+        } else {
             errInfo = exception.getMessage();
         }
         // 如果是JSON，则返回JSON字符串；否则进行页面的跳转
         response.setStatus(HttpStatus.OK.value());
         response.setContentType("application/json;charset=UTF-8");
-        response.setHeader("Access-Control-Allow-Origin",request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-        response.getWriter().write(objectMapper.writeValueAsString(new BaseOpMsg(StatusCode.RES_FAILURE, errInfo,null)));
+        response.getWriter().write(objectMapper.writeValueAsString(new BaseOpMsg(StatusCode.RES_FAILURE, errInfo, null)));
 
     }
 }

@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  * @author 韩炜
- * @date 2019-01-22 11:01
+ * @date 2019-01-26 17:27
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,6 +27,14 @@ public class CityCodeServiceImplTest {
     @Test
     public void getCityListByLevel() {
         List<City> cityList = cityCodeService.getCityListByLevel(1);
+        for (City city : cityList) {
+            System.out.println(city);
+        }
+    }
+
+    @Test
+    public void getCityListByParent() {
+        List<City> cityList = cityCodeService.getCityListByParent(2L);
         for (City city : cityList) {
             System.out.println(city);
         }

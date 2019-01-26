@@ -17,6 +17,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 
+/**
+ * spring data redis 设置
+ *
+ * @author 韩炜
+ * @date 2019-01-24 15:40
+ */
 @EnableCaching
 @Configuration
 @ConditionalOnExpression("${spring.redis.config}")
@@ -48,7 +54,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     /**
-     *  实例化 RedisTemplate 对象
+     * 实例化 RedisTemplate 对象
      */
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {

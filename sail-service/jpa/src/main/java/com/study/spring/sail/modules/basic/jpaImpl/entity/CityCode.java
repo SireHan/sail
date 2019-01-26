@@ -1,6 +1,5 @@
 package com.study.spring.sail.modules.basic.jpaImpl.entity;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +7,8 @@ import java.io.Serializable;
 
 
 /**
+ *  city_code 城市代码表
+ *
  * @author 韩炜
  * @date 2019-01-15 11:00
  */

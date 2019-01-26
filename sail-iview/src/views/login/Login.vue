@@ -16,20 +16,21 @@
 
 <script>
     import LoginForm from '_c/common/LoginForm'
-    import { mapActions } from 'vuex'
+    import {mapActions} from 'vuex'
+
     export default {
         name: "login",
         components: {LoginForm},
-        methods:{
+        methods: {
             ...mapActions([
                 'handleLogin',
                 'updateUserInfo'
             ]),
-            loginAction({loginName,password}){
-                this.handleLogin({loginName,password}).then(() => {
-                    this.updateUserInfo().then(data => {
+            loginAction({loginName, password}) {
+                this.handleLogin({loginName, password}).then(() => {
+                    this.updateUserInfo().then(() => {
                         this.$router.push({
-                            name: data.homeName || this.$config.homeName
+                            name: this.$store.state.user.homeName
                         })
                     })
                 })
@@ -39,14 +40,15 @@
 </script>
 
 <style scoped lang="scss" type="text/css">
-    .loginDiv{
+    .loginDiv {
         width: 100%;
         height: 100%;
         background-image: url('../../assets/images/login-bg.jpg');
         background-size: cover;
         background-position: center;
     }
-    .logoImg{
+
+    .logoImg {
         width: 80px;
     }
 </style>

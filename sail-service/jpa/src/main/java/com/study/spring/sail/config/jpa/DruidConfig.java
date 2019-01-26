@@ -16,8 +16,10 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 /**
- * druid 配置
- * Created by JoinHan on 2017/4/14.
+ * Druid 数据源配置
+ *
+ * @author 韩炜
+ * @date 2019-01-17 16:27
  */
 @Configuration
 public class DruidConfig {
@@ -26,11 +28,11 @@ public class DruidConfig {
 
     /**
      * master DataSource
+     *
+     * @return data source
      * @Primary 注解用于标识默认使用的 DataSource Bean，因为有多个 DataSource Bean，该注解可用于 master
      * 或 slave DataSource Bean, 但不能用于 dynamicDataSource Bean, 否则会产生循环调用
-     *
      * @ConfigurationProperties 注解用于从 application.properties 文件中读取配置，为 Bean 设置属性
-     * @return data source
      */
     @Bean("master")
     @Primary
@@ -40,7 +42,7 @@ public class DruidConfig {
     }
 
 
-    @Bean(name="MasterServletRegistrationBean")
+    @Bean(name = "MasterServletRegistrationBean")
     @SuppressWarnings("unchecked")
     public ServletRegistrationBean druidServlet() {
         ServletRegistrationBean reg = new ServletRegistrationBean();
@@ -52,7 +54,7 @@ public class DruidConfig {
         return reg;
     }
 
-    @Bean(name="MasterFilterRegistrationBean")
+    @Bean(name = "MasterFilterRegistrationBean")
     @SuppressWarnings("unchecked")
     public FilterRegistrationBean filterRegistrationBean() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();

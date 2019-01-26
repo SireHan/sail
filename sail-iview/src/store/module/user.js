@@ -1,55 +1,56 @@
-import {login,getUserInfo} from "@/api/module/user";
-import {setToken} from "@/lib/util";
+import {login, getUserInfo} from "@/api/module/user"
+import {setToken} from "@/lib/util"
+import config from '@/config'
+
+const {homeName, success, failure} = config
 
 export default {
     state: {
         loginName: '',
+        homeName: '',
+        // 是否要更新账户信息
+        updateInfo: false,
+        // 权限列表
+        access: [],
         userId: '',
         roleId: '',
         officeId: '',
         token: ''
     },
-    mutations:{
-        setToken (state, token) {
-            state.token = token
-            setToken(token)
+    mutations: {
+        setHomeName(state, homeName) {
+            state.homeName = homeName
         },
-        setLoginName (state, loginName) {
+        setLoginName(state, loginName) {
             state.loginName = loginName
         },
-        setUserId (state, userId) {
+        setUserId(state, userId) {
             state.userId = userId
         },
     },
-    actions:{
+    actions: {
         // 登录
-        handleLogin({ commit }, {loginName, password}){
+        handleLogin({commit}, {loginName, password}) {
             loginName = loginName.trim()
-            return new Promise((resolve, reject) => {
-                login({loginName, password})
-                    .then(data => {
-                        commit('setToken', data.token)
-                        resolve()
-                    }).catch(err =>{
-                        reject(err);
-                    })
-            })
+            return login({loginName, password})
+                .then(res => {
+                    if (res.code === success) { // 登录成功
+                        // 设置登录信息
+                        commit('setLoginName', loginName)
+                    } else {
+                        // 显示错误信息
+
+                    }
+                })
         },
-        // 获取用户信息
-        updateUserInfo({ state, commit }){
-            return new Promise((resolve, reject) => {
-                try {
-                    getUserInfo(state.token).then(data => {
-                        commit('setLoginName', data.loginName)
-                        commit('setUserId', data.userId)
-                        resolve(data)
-                    }).catch(err => {
-                        reject(err)
-                    })
-                } catch (error) {
-                    reject(error)
-                }
-            })
+        // 更新用户信息
+        updateUserInfo({state, commit}) {
+            return getUserInfo(state.loginName)
+                .then(res => {
+                    const data = res.object
+                    commit('setHomeName', data.homeName || homeName)
+                    commit('setLoginName', data.login.loginName)
+                })
         }
     }
 }

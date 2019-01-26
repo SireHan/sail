@@ -6,21 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *@author 韩炜
- *@version 2018年8月30日 下午1:33:47
+ * 系统信息 用户详细信息
+ *
+ * @author 韩炜
+ * @date 2019-01-15 11:00
  */
 @Data
 public class UserInfo {
-	//帐户信息
+    // 帐户信息
 	private Login login;
-	//是否是管理员
-	private boolean admin = false; 
-	//权限信息
-	private List<Permission> permissionList;
-	//角色信息
+    // 用户信息
+    private User user;
+    // 是否是管理员
+    private boolean isAdmin = false;
+    // 角色信息
 	private List<Role> roleList;
-	
-	//首页路由
+    // 权限信息
+    private List<Permission> permissionList;
+
+    // 首页路由地址
 	private String homeRoute;
 	
 	public UserInfo() {

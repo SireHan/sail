@@ -9,13 +9,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
+/**
+ * spring security 配置
+ *
+ * @author 韩炜
+ * @date 2019-01-24 15:40
+ */
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    MyFilterInvocationSecurityMetadataSource myFilterInvocationSecurityMetadataSource;
+    MySecurityMetadataSource myFilterInvocationSecurityMetadataSource;
     @Autowired
     MyAccessDecisionManager myAccessDecisionManager;
+
     @Autowired
     AuthenticationAccessDeniedHandler authenticationAccessDeniedHandler;
     @Autowired
@@ -23,26 +30,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private MyAuthenctiationFailureHandler myAuthenctiationFailureHandler;
 
+    /*@Autowired
+    private MyFilterSecurityInterceptor myFilterSecurityInterceptor;*/
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http .authorizeRequests()
-                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
-                    @Override
-                    public <O extends FilterSecurityInterceptor> O postProcess(O o) {
-                        o.setSecurityMetadataSource(myFilterInvocationSecurityMetadataSource);
-                        o.setAccessDecisionManager(myAccessDecisionManager);
-                        return o;
-                    }
-                })
+        http.authorizeRequests()
+                .antMatchers("/api/sys/loginValidator", "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/")
+                .formLogin().loginPage("/login")
                 .loginProcessingUrl("/api/sys/login")
                 .successHandler(myAuthenctiationSuccessHandler)
                 .failureHandler(myAuthenctiationFailureHandler)
-                .permitAll().and().logout().deleteCookies()  //删除cookie
-                .and().csrf().disable().exceptionHandling().accessDeniedHandler(authenticationAccessDeniedHandler);
+                .permitAll().and().logout().logoutSuccessUrl("/").permitAll().deleteCookies()  //删除cookie
+                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+                    @Override
+                    public <O extends FilterSecurityInterceptor> O postProcess(O o) {
+                        o.setAccessDecisionManager(myAccessDecisionManager);
+                        o.setSecurityMetadataSource(myFilterInvocationSecurityMetadataSource);
+                        return o;
+                    }
+                }).and().cors().and().csrf().disable().exceptionHandling().accessDeniedHandler(authenticationAccessDeniedHandler);
+
     }
 
     /**

@@ -1,17 +1,32 @@
 import $ from '@/lib/request';
 
-export const login =({loginName,password}) =>{
+/**
+ * @Param 账户名 密码
+ * @description 登录接口
+ */
+export const login = ({loginName, password}) => {
     const data = {
-        username:loginName,
+        username: loginName,
         password
     }
-    return $.ajax.post('api/sys/login',data)
+    return $.ajax.post('api/sys/login', data)
 }
 
-export const getUserInfo =(token) =>{
+/**
+ * @Param 账户名
+ * @description 获取账户信息接口
+ */
+export const getUserInfo = (loginName) => {
     const data = {
-        token
+        loginName
     }
-    return $.ajax.post('api/sys/userInfo',data)
+    return $.ajax.post('api/sys/userInfo', data)
+}
+
+/**
+ * @description 验证登录状态接口
+ */
+export const loginValidator = () => {
+    return $.ajax.get('api/sys/loginValidator')
 }
 

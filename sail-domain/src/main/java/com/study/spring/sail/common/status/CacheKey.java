@@ -7,14 +7,12 @@ package com.study.spring.sail.common.status;
  * @date 2019-01-15 11:00
  */
 public class CacheKey {
-	/*
-	 * cacheName值
-	 */
-	// 系统缓存
-	public static final String SYS_CACHE = "SysCache";
-	// 缓存用户信息
-	public static final String USER_CACHE = "UserCache";
+    /*
+     * cacheName值
+     */
+    public static final String SYS_CACHE = "SysCache";                                 // 系统缓存
+    public static final String USER_CACHE = "UserCache";                               // 缓存用户信息
 
-	// -------- 其他缓存
-	
+    // -------- 其他缓存
+
 }

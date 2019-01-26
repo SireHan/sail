@@ -1,5 +1,6 @@
 package com.study.spring.sail.config.web;
 
+import com.study.spring.sail.modules.sys.domain.Login;
 import com.study.spring.sail.modules.sys.domain.LoginInfo;
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,17 +30,17 @@ public class RedisTest {
 
     @Test
     public void readAndWriteObject() throws Exception {
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setLoginName("testAccount");
-        loginInfo.setPassword("123456");
-        loginInfo.setLoginStatus("0");
-        loginInfo.setLoginType("0");
-        loginInfo.setUserId(1L);
-        redisTemplate.opsForValue().set("sysLogin.testAccount",loginInfo);
+        Login login = new Login();
+        login.setLoginName("testAccount");
+        login.setPassword("123456");
+        login.setLoginStatus("0");
+        login.setLoginType("0");
+        login.setUserId(1L);
+        redisTemplate.opsForValue().set("sysLogin.testAccount", login);
         Thread.sleep(1000);
         boolean exists = redisTemplate.hasKey("sysLogin.testAccount");
         if(exists){
-            Assert.assertEquals(loginInfo.getLoginName(),((LoginInfo)redisTemplate.opsForValue().get("sysLogin.testAccount")).getLoginName());
+            Assert.assertEquals(login.getLoginName(), ((Login) redisTemplate.opsForValue().get("sysLogin.testAccount")).getLoginName());
         }
     }
 }

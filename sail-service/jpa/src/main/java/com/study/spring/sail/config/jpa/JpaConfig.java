@@ -9,6 +9,12 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * JPA 配置类 事务配置
+ *
+ * @author 韩炜
+ * @date 2019-01-17 16:27
+ */
 @Configuration
 @EnableJpaRepositories("com.study.spring.sail.modules.**.jpaImpl.dao")
 @EntityScan("com.study.spring.sail.modules.**.jpaImpl.entity")
@@ -17,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class JpaConfig {
 
     @Bean
-    public PlatformTransactionManager transactionManager(){
+    public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         return transactionManager;
     }

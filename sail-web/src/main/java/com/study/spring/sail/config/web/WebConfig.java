@@ -15,23 +15,34 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.util.Locale;
 
+/**
+ * spring mvc 配置
+ *
+ * @author 韩炜
+ * @date 2019-01-24 15:40
+ */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 跨域请求设置
+     *
      * @param registry
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:8080")
-                .allowedHeaders("Access-Control-Allow-Origin: *")
-                .allowCredentials(true);
+                .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
+                .allowedHeaders("x-requested-with")
+                .allowCredentials(true)
+                .maxAge(3600);
+
     }
 
     /**
      * 自定义filter
+     *
      * @return
      */
     @Bean
@@ -47,6 +58,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 启动遇到问题关闭服务返回状态码
+     *
      * @return
      */
     @Bean
@@ -62,6 +74,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 语言环境设置
+     *
      * @return
      */
     @Bean
@@ -73,6 +86,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 根据lang 切换语言环境
+     *
      * @return
      */
     @Bean

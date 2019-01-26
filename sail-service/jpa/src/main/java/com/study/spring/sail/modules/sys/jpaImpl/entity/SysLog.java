@@ -1,16 +1,20 @@
 package com.study.spring.sail.modules.sys.jpaImpl.entity;
 
 import com.study.spring.sail.config.jpa.BaseAuditEntity;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Getter
-@Setter
+/**
+ * sys_log 系统日志表
+ *
+ * @author 韩炜
+ * @date 2019-01-15 11:00
+ */
+@Data
 @Entity
 public class SysLog extends BaseAuditEntity {
 
@@ -25,9 +29,9 @@ public class SysLog extends BaseAuditEntity {
     private String logLevel;                                  // 日志级别
     @Column(nullable = false)
     private String logTitle;                                  // 日志标题
-    @Column(nullable = true)
+    @Column
     private String logContent;                               // 日志内容
-    @Column(nullable = true)
+    @Column
     private String jsonInfo;                                 // 其他信息json
 
 }

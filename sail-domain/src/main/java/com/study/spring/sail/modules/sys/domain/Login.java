@@ -3,14 +3,20 @@ package com.study.spring.sail.modules.sys.domain;
 import com.study.spring.sail.common.base.BaseEntity;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 系统信息 账户信息
+ *
+ * @author 韩炜
+ * @date 2019-01-15 11:00
+ */
 @Data
 public class Login extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    public static final String ADMIN = "admin";         // 超级账户
+
+    public static final String ADMIN = "admin";          // 超级账户标识
 
     private Long id;
     private String loginName;                               // 登录名

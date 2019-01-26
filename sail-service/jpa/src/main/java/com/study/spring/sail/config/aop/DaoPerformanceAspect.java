@@ -8,20 +8,30 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * pepository 执行时间 aop
+ *
+ * @author 韩炜
+ * @date 2019-01-15 11:00
+ */
 @Aspect
 @Component
-public class PerformanceAspect {
+public class DaoPerformanceAspect {
 
     @Pointcut("execution(* com.study.spring.sail.modules.*.jpaImpl.dao.*Repository.*(..))")
-    public void repositoryClassMethods(){}
+    public void repositoryClassMethods() {
+    }
 
     @Around("repositoryClassMethods()")
-    public Object measureMehtodExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable{
+    public Object measureMehtodExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.nanoTime();
         Object returnValue = joinPoint.proceed();
         long end = System.nanoTime();
         String methodName = joinPoint.getSignature().getName();
-        System.out.println("Execution of " + methodName + " took " + TimeUnit.NANOSECONDS.toMillis(end - start) + " ms");
+        String classType = joinPoint.getTarget().getClass().getName();
+        Class<?> clazz = Class.forName(classType);
+        String clazzName = clazz.getName();
+        System.out.println("Execution of " + clazzName + ":" + methodName + " took " + TimeUnit.NANOSECONDS.toMillis(end - start) + " ms");
         return returnValue;
     }
 }

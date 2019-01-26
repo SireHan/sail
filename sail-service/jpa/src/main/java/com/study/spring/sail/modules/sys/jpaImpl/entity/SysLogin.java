@@ -2,19 +2,19 @@ package com.study.spring.sail.modules.sys.jpaImpl.entity;
 
 import com.study.spring.sail.config.jpa.BaseAuditEntity;
 import com.study.spring.sail.modules.sys.domain.Login;
-import com.study.spring.sail.modules.sys.domain.LoginInfo;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * sys_login 系统账户表
+ *
+ * @author 韩炜
+ * @date 2019-01-15 11:00
+ */
 @Data
 @Entity
 public class SysLogin extends BaseAuditEntity {
@@ -24,7 +24,7 @@ public class SysLogin extends BaseAuditEntity {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String loginName;                               // 登录名
     @Column(nullable = false)
     private String password;                                // 密码
@@ -32,9 +32,9 @@ public class SysLogin extends BaseAuditEntity {
     private String loginStatus;                            // 登录状态
     @Column(nullable = false)
     private String loginType;                               // 账户类型
-    @Column(nullable = true,unique = true)
+    @Column(nullable = true, unique = true)
     private String phone;                                   // 手机号
-    @Column(nullable = true,unique = true)
+    @Column(nullable = true, unique = true)
     private String email;                                   // 邮箱
     @Column(nullable = true)
     private Long photoId;                                   // 头像id
@@ -45,9 +45,9 @@ public class SysLogin extends BaseAuditEntity {
     @Column(nullable = true)
     private Date loginDate;                                 // 最后一次登录时间
 
-    public Login transLogin(){
+    public Login transLogin() {
         Login login = new Login();
-        BeanUtils.copyProperties(login, this);
+        BeanUtils.copyProperties(this, login);
         return login;
     }
 }

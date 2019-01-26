@@ -3,8 +3,6 @@ package com.study.spring.sail.config.web.security;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +12,8 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
+ * 自定义权限认证管理
+ *
  * @author 韩炜
  * @date 2019-01-24 16:14
  */
@@ -26,19 +26,13 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
     //configAttributes 为MyInvocationSecurityMetadataSource的getAttributes(Object object)这个方法返回的结果，此方法是为了判定用户请求的url 是否在权限表中，如果在权限表中，则返回给 decide 方法，用来判定用户是否有此权限。如果不在权限表中则放行。
     @Override
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
-        if (authentication instanceof AnonymousAuthenticationToken) {
-            throw new BadCredentialsException("未登录");
-        }
-        if(null== configAttributes || configAttributes.size() <=0) {
-            return;
-        }
 
         String needRole;
-        for(Iterator<ConfigAttribute> iter = configAttributes.iterator(); iter.hasNext(); ) {
+        for (Iterator<ConfigAttribute> iter = configAttributes.iterator(); iter.hasNext(); ) {
             ConfigAttribute c = iter.next();
             needRole = c.getAttribute();
-            for(GrantedAuthority ga : authentication.getAuthorities()) {//authentication 为在注释1 中循环添加到 GrantedAuthority 对象中的权限信息集合
-                if(needRole.trim().equals(ga.getAuthority())) {
+            for (GrantedAuthority ga : authentication.getAuthorities()) {//authentication 为在注释1 中循环添加到 GrantedAuthority 对象中的权限信息集合
+                if (needRole.trim().equals(ga.getAuthority())) {
                     return;
                 }
             }

@@ -2,7 +2,6 @@ package com.study.spring.sail.config.web.security;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,9 +20,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 验证成功返回json
-*@author 韩炜
-*@version 2018年8月29日 上午11:27:26
-*/
+ *
+ * @author 韩炜
+ * @version 2018年8月29日 上午11:27:26
+ */
 @Component("myAuthenctiationSuccessHandler")
 public class MyAuthenctiationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
@@ -45,7 +45,12 @@ public class MyAuthenctiationSuccessHandler extends SimpleUrlAuthenticationSucce
         //request.getSession().setAttribute(userInfo.getLogin().getLoginName(), userInfo);
         // 登录日志处理 并重置上次登录时间
         //loginInfoService.afterUserLogin(userInfo.getLogin());
-
-        response.getWriter().write(objectMapper.writeValueAsString(new BaseOpMsg(StatusCode.RES_SUCCESS, "登录成功",null)));
+        response.setContentType("application/x-www-form-urlencoded;charset=UTF-8");
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        response.getWriter().write(objectMapper.writeValueAsString(new BaseOpMsg(StatusCode.RES_SUCCESS, "登录成功", null)));
     }
 }
