@@ -19,7 +19,7 @@ public class Permission extends BaseEntity {
     public static final String DATA = "data";                         // 数据权限类型
 
     private Long id;
-    private String permissionType;                                      // 权限类型 0-菜单
+    private String permissionType;                                      // 权限类型
     private String permissionName;                                      // 权限名称
     private String url;                                                   // 权限路径 （菜单URL 其他为空）
 

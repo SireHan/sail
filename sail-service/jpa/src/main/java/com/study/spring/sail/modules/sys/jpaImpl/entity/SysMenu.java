@@ -1,8 +1,10 @@
 package com.study.spring.sail.modules.sys.jpaImpl.entity;
 
 import com.study.spring.sail.config.jpa.BaseAuditEntity;
+import com.study.spring.sail.modules.sys.domain.Menu;
 import com.study.spring.sail.modules.sys.domain.Permission;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,7 +43,7 @@ public class SysMenu extends BaseAuditEntity {
     @Column(nullable = false)
     private String menuStatus;                                 // 菜单状态
     @Column(nullable = false)
-    private String menuType;                                   // 菜单类型
+    private String menuType;                                   // 菜单类型  0-根目录 1-菜单（含有子节点） 2-菜单（不含有子节点）
     @Column(nullable = false)
     private Long permissionId;                                // 权限id
 
@@ -51,5 +53,11 @@ public class SysMenu extends BaseAuditEntity {
         permission.setId(this.permissionId);
         permission.setUrl(this.menuHref);
         return permission;
+    }
+
+    public Menu transMenu() {
+        Menu menu = new Menu();
+        BeanUtils.copyProperties(this, menu);
+        return menu;
     }
 }

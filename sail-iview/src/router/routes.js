@@ -28,7 +28,17 @@ export default [
     {
         path: '/',
         name: 'home',
-        component: Home
+        component: Home,
+        /*children: [
+            {
+                path: '/index',
+                name: 'index',
+                meta: {
+                    title: '首页',
+                },
+                component: () => import('@/view/single-page/home')
+            }
+            ]*/
     },
     {
         path: '/about',

@@ -26,6 +26,7 @@ public class SysPermission extends BaseAuditEntity {
     @Column(nullable = false)
     private String permissionType;                                      // 权限类型
     @Column(nullable = false)
-    private String permissionName;                                      // 权限对应的id
-
+    private String permissionName;                                      // 权限对应的名称
+    @Column(nullable = false)
+    private Long permissionValue;                                      // 权限对应的id 根据权限类型
 }
